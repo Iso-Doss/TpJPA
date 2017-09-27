@@ -14,6 +14,8 @@ public class BaseRepository {
 
     public BaseRepository(String UnitPersistence) {
         this.UnitPersistence = UnitPersistence;
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(UnitPersistence);
+        em = emf.createEntityManager();
     }
 
     public EntityManager getEntityManager() {

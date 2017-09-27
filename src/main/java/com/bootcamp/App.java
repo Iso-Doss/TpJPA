@@ -1,7 +1,5 @@
 package com.bootcamp;
 
-import com.bootcamp.jpa.entities.Bailleur;
-import com.bootcamp.jpa.enums.TypeDeBailleur;
 import java.util.Properties;
 import javax.persistence.*;
 
@@ -20,7 +18,8 @@ public class App {
         /*EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.bootcamp_TpJPA");
         EntityManagerFactory emf1 = Persistence.createEntityManagerFactory("tpJpa");*/
 
- /*EntityManager em = emf.createEntityManager();
+ /*
+        EntityManager em = emf.createEntityManager();
         
         
         Bailleur bailleur = new Bailleur();

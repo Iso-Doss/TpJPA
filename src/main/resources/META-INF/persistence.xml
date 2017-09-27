@@ -23,8 +23,8 @@
     
     <persistence-unit name="tpJpa" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <class>com.bootcamp.jpa.entities.Personne</class>
         <class>com.bootcamp.jpa.entities.Bailleur</class>
+        <class>com.bootcamp.jpa.entities.Personne</class>
         <class>com.bootcamp.jpa.entities.Beneficiaire</class>
         <class>com.bootcamp.jpa.entities.Fournisseur</class>
         <class>com.bootcamp.jpa.entities.IndicateurQualitatif</class>

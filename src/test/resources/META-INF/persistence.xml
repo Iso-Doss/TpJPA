@@ -23,8 +23,8 @@
     
     <persistence-unit name="tpJpa" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <class>com.bootcamp.jpa.entities.Personne</class>
         <class>com.bootcamp.jpa.entities.Bailleur</class>
+        <class>com.bootcamp.jpa.entities.Personne</class>
         <class>com.bootcamp.jpa.entities.Beneficiaire</class>
         <class>com.bootcamp.jpa.entities.Fournisseur</class>
         <class>com.bootcamp.jpa.entities.IndicateurQualitatif</class>
@@ -35,7 +35,6 @@
         <class>com.bootcamp.jpa.entities.IndicateurPerformance</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-            <!--property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bootcamp" /-->
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/tp-jpa?zeroDateTimeBehavior=convertToNull" />
             <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password" value="" />

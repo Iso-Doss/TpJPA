@@ -20,36 +20,36 @@ public class BailleurRepository extends BaseRepository {
     }
 
     public void addBailleur(Bailleur bailleur) {
-        em.getTransaction().begin();
-        em.persist(bailleur);
-        em.getTransaction().commit();
+        getEm().getTransaction().begin();
+        getEm().persist(bailleur);
+        getEm().getTransaction().commit();
     }
 
     public void removeBailleur(Bailleur bailleur) {
-        em.getTransaction().begin();
-        em.remove(bailleur);
-        em.getTransaction().commit();
+        getEm().getTransaction().begin();
+        getEm().remove(bailleur);
+        getEm().getTransaction().commit();
     }
 
     public List<Bailleur> findAll() {
-        Query query = em.createQuery("select bailleur from Bailleur bailleur");
+        Query query = getEm().createQuery("select bailleur from Bailleur bailleur");
         return query.getResultList();
     }
 
     public Bailleur findById(Bailleur bailleur) {
-        Query query = em.createQuery("select bailleur from Bailleur bailleur where bailleur.id = :id");
+        Query query = getEm().createQuery("select bailleur from Bailleur bailleur where bailleur.id = :id");
         query.setParameter("id", bailleur.getId());
         return (Bailleur) query.getSingleResult();
     }
 
     public List<Bailleur> findByName(Bailleur bailleur) {
-        Query query = em.createQuery("select bailleur from Bailleur bailleur where bailleur.nom = :nom");
+        Query query = getEm().createQuery("select bailleur from Bailleur bailleur where bailleur.nom = :nom");
         query.setParameter("nom", bailleur.getNom());
         return query.getResultList();
     }
 
     public List<Bailleur> findByTypeDeBailleur(Bailleur bailleur) {
-        Query query = em.createQuery("select bailleur from Bailleur bailleur where bailleur.typeDeBailleur = :type");
+        Query query = getEm().createQuery("select bailleur from Bailleur bailleur where bailleur.typeDeBailleur = :type");
         query.setParameter("type", bailleur.getTypeDeBailleur());
         return query.getResultList();
     }

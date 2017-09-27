@@ -20,30 +20,30 @@ public class BeneficiaireRepository extends BaseRepository {
     }
 
     public void addBeneficiaire(Beneficiaire beneficiaire) {
-        em.getTransaction().begin();
-        em.persist(beneficiaire);
-        em.getTransaction().commit();
+        getEm().getTransaction().begin();
+        getEm().persist(beneficiaire);
+        getEm().getTransaction().commit();
     }
 
     public void removeBeneficiaire(Beneficiaire beneficiaire) {
-        em.getTransaction().begin();
-        em.remove(beneficiaire);
-        em.getTransaction().commit();
+        getEm().getTransaction().begin();
+        getEm().remove(beneficiaire);
+        getEm().getTransaction().commit();
     }
 
     public List<Beneficiaire> findAll() {
-        Query query = em.createQuery("select beneficiaire from Beneficiaire beneficiaire");
+        Query query = getEm().createQuery("select beneficiaire from Beneficiaire beneficiaire");
         return query.getResultList();
     }
 
     public Beneficiaire findById(Beneficiaire beneficiaire) {
-        Query query = em.createQuery("select beneficiaire from Beneficiaire beneficiaire where beneficiaire.id = :id");
+        Query query = getEm().createQuery("select beneficiaire from Beneficiaire beneficiaire where beneficiaire.id = :id");
         query.setParameter("id", beneficiaire.getId());
         return (Beneficiaire) query.getSingleResult();
     }
 
     public List<Beneficiaire> findByName(Beneficiaire beneficiaire) {
-        Query query = em.createQuery("select beneficiaire from Beneficiaire beneficiaire where beneficiaire.nom = :nom");
+        Query query = getEm().createQuery("select beneficiaire from Beneficiaire beneficiaire where beneficiaire.nom = :nom");
         query.setParameter("nom", beneficiaire.getNom());
         return query.getResultList();
     }

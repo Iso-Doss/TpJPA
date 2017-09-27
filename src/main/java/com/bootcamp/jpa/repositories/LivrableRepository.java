@@ -20,30 +20,30 @@ public class LivrableRepository extends BaseRepository {
     }
 
     public void addLivrable(Livrable livrable) {
-        em.getTransaction().begin();
-        em.persist(livrable);
-        em.getTransaction().commit();
+        getEm().getTransaction().begin();
+        getEm().persist(livrable);
+        getEm().getTransaction().commit();
     }
 
     public void removeLivrable(Livrable livrable) {
-        em.getTransaction().begin();
-        em.remove(livrable);
-        em.getTransaction().commit();
+        getEm().getTransaction().begin();
+        getEm().remove(livrable);
+        getEm().getTransaction().commit();
     }
 
     public List<Livrable> findAll() {
-        Query query = em.createQuery("select livrable from Livrable livrable");
+        Query query = getEm().createQuery("select livrable from Livrable livrable");
         return query.getResultList();
     }
 
     public Livrable findById(Livrable livrable) {
-        Query query = em.createQuery("livrable from Livrable livrable where livrable.nom = :nom");
+        Query query = getEm().createQuery("livrable from Livrable livrable where livrable.nom = :nom");
         query.setParameter("nom", livrable.getId());
         return (Livrable) query.getSingleResult();
     }
 
     public List<Livrable> findByName(Livrable livrable) {
-        Query query = em.createQuery("livrable from Livrable livrable where livrable.nom = :nom");
+        Query query = getEm().createQuery("livrable from Livrable livrable where livrable.nom = :nom");
         query.setParameter("nom", livrable.getNom());
         return query.getResultList();
     }

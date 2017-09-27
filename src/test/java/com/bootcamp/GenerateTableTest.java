@@ -13,12 +13,35 @@ import java.util.Properties;
  */
 public class GenerateTableTest {
 
-    /*
     @Test
     public void generateTablesMysql() {
         Persistence.generateSchema("tpJpa", new Properties());
     }
-    
+
+    @Test
+    public void generateTablesDerby() {
+        Persistence.generateSchema("com.bootcamp_TpJPA", new Properties());
+    }
+
+    @Test
+    public void loadPersonnes() {
+        List<Personne> personnes = new LinkedList();
+
+        String nom[] = {"Iso", "Doss", "Ros"};
+        for (int i = 0; i < nom.length; i++) {
+            Personne personne = new Personne();
+            personne.setNom(nom[i]);
+            personnes.add(personne);
+        }
+
+        PersonneRepository pr = new PersonneRepository("com.bootcamp_TpJPA");
+        for (Object element : personnes) {
+            pr.addPersonne((Personne) element);
+        }
+
+    }
+
+    /*
     @Test
     public void loadBailleurs() {
         List<Bailleur> bailleurs = new LinkedList();
@@ -54,30 +77,5 @@ public class GenerateTableTest {
         }
 
     }
-    */
-    
-    
-    @Test
-    public void generateTablesDerby() {
-        Persistence.generateSchema("com.bootcamp_TpJPA", new Properties());
-    }
-    
-    @Test
-    public void loadPersonnes() {
-        List<Personne> personnes = new LinkedList();
-
-        String nom[] = {"Iso", "Doss", "Ros"};
-        for (int i = 0; i < nom.length; i++) {
-            Personne personne = new Personne();
-            personne.setNom(nom[i]);
-            personnes.add(personne);
-        }
-
-        PersonneRepository pr = new PersonneRepository("tpJpa");
-        for (Object element : personnes) {
-            pr.addPersonne((Personne) element);
-        }
-
-    }
-
+     */
 }

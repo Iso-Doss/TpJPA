@@ -20,30 +20,30 @@ public class IndicateurPerformanceRepository extends BaseRepository {
     }
 
     public void addIndicateurPerformance(IndicateurPerformance indicateurPerformance) {
-        em.getTransaction().begin();
-        em.persist(indicateurPerformance);
-        em.getTransaction().commit();
+        getEm().getTransaction().begin();
+        getEm().persist(indicateurPerformance);
+        getEm().getTransaction().commit();
     }
 
     public void removeIndicateurPerformance(IndicateurPerformance indicateurPerformance) {
-        em.getTransaction().begin();
-        em.remove(indicateurPerformance);
-        em.getTransaction().commit();
+        getEm().getTransaction().begin();
+        getEm().remove(indicateurPerformance);
+        getEm().getTransaction().commit();
     }
 
     public List<IndicateurPerformance> findAll() {
-        Query query = em.createQuery("select indicateurPerformance from IndicateurPerformance indicateurPerformance");
+        Query query = getEm().createQuery("select indicateurPerformance from IndicateurPerformance indicateurPerformance");
         return query.getResultList();
     }
 
     public IndicateurPerformance findById(IndicateurPerformance indicateurPerformance) {
-        Query query = em.createQuery(" select indicateurPerformance from IndicateurPerformance indicateurPerformance where indicateurPerformance.id = :id");
+        Query query = getEm().createQuery(" select indicateurPerformance from IndicateurPerformance indicateurPerformance where indicateurPerformance.id = :id");
         query.setParameter("id", indicateurPerformance.getId());
         return (IndicateurPerformance) query.getSingleResult();
     }
 
     public List<IndicateurPerformance> findByNom(IndicateurPerformance indicateurPerformance) {
-        Query query = em.createQuery("select indicateurPerformance from IndicateurPerformance indicateurPerformance where indicateurPerformance.nom = :nom");
+        Query query = getEm().createQuery("select indicateurPerformance from IndicateurPerformance indicateurPerformance where indicateurPerformance.nom = :nom");
         query.setParameter("nom", indicateurPerformance.getNom());
         return query.getResultList();
     }

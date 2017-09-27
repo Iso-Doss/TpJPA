@@ -20,30 +20,30 @@ public class PersonneRepository extends BaseRepository {
     }
 
     public void addPersonne(Personne personne) {
-        em.getTransaction().begin();
-        em.persist(personne);
-        em.getTransaction().commit();
+        getEm().getTransaction().begin();
+        getEm().persist(personne);
+        getEm().getTransaction().commit();
     }
 
     public void removePersonne(Personne personne) {
-        em.getTransaction().begin();
-        em.remove(personne);
-        em.getTransaction().commit();
+        getEm().getTransaction().begin();
+        getEm().remove(personne);
+        getEm().getTransaction().commit();
     }
 
     public List<Personne> findAll() {
-        Query query = em.createQuery("select personne from Personne personne");
+        Query query = getEm().createQuery("select personne from Personne personne");
         return query.getResultList();
     }
 
     public Personne findById(Personne personne) {
-        Query query = em.createQuery("select personne from Personne personne where personne.id = :id");
+        Query query = getEm().createQuery("select personne from Personne personne where personne.id = :id");
         query.setParameter("id", personne.getId());
         return (Personne) query.getSingleResult();
     }
 
     public List<Personne> findByName(Personne personne) {
-        Query query = em.createQuery("select personne from Personne personne where personne.nom = :nom");
+        Query query = getEm().createQuery("select personne from Personne personne where personne.nom = :nom");
         query.setParameter("nom", personne.getNom());
         return query.getResultList();
     }

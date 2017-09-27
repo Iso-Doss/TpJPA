@@ -20,54 +20,54 @@ public class ProgrammeRepository extends BaseRepository {
     }
 
     public void addProgramme(Programme programme) {
-        em.getTransaction().begin();
-        em.persist(programme);
-        em.getTransaction().commit();
+        getEm().getTransaction().begin();
+        getEm().persist(programme);
+        getEm().getTransaction().commit();
     }
 
     public void removeProgramme(Programme programme) {
-        em.getTransaction().begin();
-        em.remove(programme);
-        em.getTransaction().commit();
+        getEm().getTransaction().begin();
+        getEm().remove(programme);
+        getEm().getTransaction().commit();
     }
 
     public List<Programme> findAll() {
-        Query query = em.createQuery("select programme from Programme programme");
+        Query query = getEm().createQuery("select programme from Programme programme");
         return query.getResultList();
     }
 
     public Programme findById(Programme programme) {
-        Query query = em.createQuery("programme from Programme programme where programme.id = :id");
+        Query query = getEm().createQuery("programme from Programme programme where programme.id = :id");
         query.setParameter("id", programme.getId());
         return (Programme) query.getSingleResult();
     }
 
     public List<Programme> findByName(Programme programme) {
-        Query query = em.createQuery("programme from Programme programme where programme.nom = :nom");
+        Query query = getEm().createQuery("programme from Programme programme where programme.nom = :nom");
         query.setParameter("nom", programme.getNom());
         return query.getResultList();
     }
 
     public List<Programme> findByObjectif(Programme programme) {
-        Query query = em.createQuery("programme from Programme programme where programme.objectif = :objectif");
+        Query query = getEm().createQuery("programme from Programme programme where programme.objectif = :objectif");
         query.setParameter("objectif", programme.getObjectif());
         return query.getResultList();
     }
 
     public List<Bailleur> getBailleursOfProgramme(Programme programme) {
-        Query query = em.createQuery("select bailleurs from Programme programme join programme.bailleurs bailleurs where programme.id = :id");
+        Query query = getEm().createQuery("select bailleurs from Programme programme join programme.bailleurs bailleurs where programme.id = :id");
         query.setParameter("id", programme.getId());
         return query.getResultList();
     }
 
     public List<Fournisseur> getFournisseursOfProgramme(Programme programme) {
-        Query query = em.createQuery("select fournisseurs from Programme programme join programme.fournisseurs ournisseurs where programme.id = :id");
+        Query query = getEm().createQuery("select fournisseurs from Programme programme join programme.fournisseurs ournisseurs where programme.id = :id");
         query.setParameter("id", programme.getId());
         return query.getResultList();
     }
 
     public List<Beneficiaire> getBeneficiairesOfProgramme(Programme programme) {
-        Query query = em.createQuery("select beneficiaires from Programme programme join programme.beneficiaires beneficiaires where programme.id = :id");
+        Query query = getEm().createQuery("select beneficiaires from Programme programme join programme.beneficiaires beneficiaires where programme.id = :id");
         query.setParameter("id", programme.getId());
         return query.getResultList();
     }

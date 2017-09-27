@@ -9,8 +9,8 @@ import javax.persistence.Persistence;
  */
 public class BaseRepository {
 
-    protected EntityManager em;
-    protected String UnitPersistence;
+    private EntityManager em;
+    private String UnitPersistence;
 
     public BaseRepository(String UnitPersistence) {
         this.UnitPersistence = UnitPersistence;
@@ -19,8 +19,36 @@ public class BaseRepository {
     }
 
     public EntityManager getEntityManager() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory(UnitPersistence);
-        em = emf.createEntityManager();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(getUnitPersistence());
+        setEm(emf.createEntityManager());
+        return getEm();
+    }
+
+    /**
+     * @return the em
+     */
+    public EntityManager getEm() {
         return em;
+    }
+
+    /**
+     * @param em the em to set
+     */
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
+
+    /**
+     * @return the UnitPersistence
+     */
+    public String getUnitPersistence() {
+        return UnitPersistence;
+    }
+
+    /**
+     * @param UnitPersistence the UnitPersistence to set
+     */
+    public void setUnitPersistence(String UnitPersistence) {
+        this.UnitPersistence = UnitPersistence;
     }
 }

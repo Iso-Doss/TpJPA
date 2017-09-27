@@ -20,30 +20,30 @@ public class FournisseurRepository extends BaseRepository {
     }
 
     public void addFournisseur(Fournisseur fournisseur) {
-        em.getTransaction().begin();
-        em.persist(fournisseur);
-        em.getTransaction().commit();
+        getEm().getTransaction().begin();
+        getEm().persist(fournisseur);
+        getEm().getTransaction().commit();
     }
 
     public void removeFournisseur(Fournisseur fournisseur) {
-        em.getTransaction().begin();
-        em.remove(fournisseur);
-        em.getTransaction().commit();
+        getEm().getTransaction().begin();
+        getEm().remove(fournisseur);
+        getEm().getTransaction().commit();
     }
 
     public List<Fournisseur> findAll() {
-        Query query = em.createQuery("select fournisseur from Fournisseur fournisseur");
+        Query query = getEm().createQuery("select fournisseur from Fournisseur fournisseur");
         return query.getResultList();
     }
 
     public Fournisseur findById(Fournisseur fournisseur) {
-        Query query = em.createQuery("select fournisseur from Fournisseur fournisseur where fournisseur.nom = :id");
+        Query query = getEm().createQuery("select fournisseur from Fournisseur fournisseur where fournisseur.nom = :id");
         query.setParameter("id", fournisseur.getId());
         return (Fournisseur) query.getSingleResult();
     }
 
     public List<Fournisseur> findByName(Fournisseur fournisseur) {
-        Query query = em.createQuery("select fournisseur from Fournisseur fournisseur where fournisseur.nom = :nom");
+        Query query = getEm().createQuery("select fournisseur from Fournisseur fournisseur where fournisseur.nom = :nom");
         query.setParameter("nom", fournisseur.getNom());
         return query.getResultList();
     }

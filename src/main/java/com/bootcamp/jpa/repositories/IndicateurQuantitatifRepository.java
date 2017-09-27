@@ -20,42 +20,42 @@ public class IndicateurQuantitatifRepository extends BaseRepository {
     }
 
     public void addIndicateurQuantitatif(IndicateurQuantitatif indicateurQuantitatif) {
-        em.getTransaction().begin();
-        em.persist(indicateurQuantitatif);
-        em.getTransaction().commit();
+        getEm().getTransaction().begin();
+        getEm().persist(indicateurQuantitatif);
+        getEm().getTransaction().commit();
     }
 
     public void removeIndicateurQuantitatif(IndicateurQuantitatif indicateurQuantitatif) {
-        em.getTransaction().begin();
-        em.remove(indicateurQuantitatif);
-        em.getTransaction().commit();
+        getEm().getTransaction().begin();
+        getEm().remove(indicateurQuantitatif);
+        getEm().getTransaction().commit();
     }
 
     public List<IndicateurQuantitatif> findAll() {
-        Query query = em.createQuery("select indicateurQuantitatif from IndicateurQuantitatif indicateurQuantitatif");
+        Query query = getEm().createQuery("select indicateurQuantitatif from IndicateurQuantitatif indicateurQuantitatif");
         return query.getResultList();
     }
 
     public IndicateurQuantitatif findById(IndicateurQuantitatif indicateurQuantitatif) {
-        Query query = em.createQuery("select indicateurQuantitatif from IndicateurQuantitatif indicateurQuantitatif where indicateurQuantitatif.id = :id");
+        Query query = getEm().createQuery("select indicateurQuantitatif from IndicateurQuantitatif indicateurQuantitatif where indicateurQuantitatif.id = :id");
         query.setParameter("id", indicateurQuantitatif.getId());
         return (IndicateurQuantitatif) query.getSingleResult();
     }
 
     public List<IndicateurQuantitatif> findByNom(IndicateurQuantitatif indicateurQuantitatif) {
-        Query query = em.createQuery("select indicateurQuantitatif from IndicateurQuantitatif indicateurQuantitatif where indicateurQuantitatif.nom = :nom");
+        Query query = getEm().createQuery("select indicateurQuantitatif from IndicateurQuantitatif indicateurQuantitatif where indicateurQuantitatif.nom = :nom");
         query.setParameter("nom", indicateurQuantitatif.getNom());
         return query.getResultList();
     }
 
     public List<IndicateurQuantitatif> findByPropriete(IndicateurQuantitatif indicateurQuantitatif) {
-        Query query = em.createQuery("select indicateurQuantitatif from IndicateurQuantitatif indicateurQuantitatif where indicateurQuantitatif.propriete = :propriete");
+        Query query = getEm().createQuery("select indicateurQuantitatif from IndicateurQuantitatif indicateurQuantitatif where indicateurQuantitatif.propriete = :propriete");
         query.setParameter("propriete", indicateurQuantitatif.getPropriete());
         return query.getResultList();
     }
 
     public List<IndicateurQuantitatif> findByValeur(IndicateurQuantitatif indicateurQuantitatif) {
-        Query query = em.createQuery("indicateurQuantitatif from IndicateurQuantitatif indicateurQuantitatif where indicateurQuantitatif.valeur = :valeur");
+        Query query = getEm().createQuery("indicateurQuantitatif from IndicateurQuantitatif indicateurQuantitatif where indicateurQuantitatif.valeur = :valeur");
         query.setParameter("valeur", indicateurQuantitatif.getValeur());
         return query.getResultList();
     }

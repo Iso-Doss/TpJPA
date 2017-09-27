@@ -24,18 +24,10 @@ public class IndicateurPerformance implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull(message = "Le champs libelle ne peut etre null.")
-    @Column(name = "libelle", length = 45, nullable = false)
-    private String libelle;
-
-    @NotNull(message = "Le champs nature ne peut etre null.")
-    @Column(name = "nature", length = 45, nullable = false)
-    private String nature;
-
-    @NotNull(message = "Le champs valeur ne peut etre null.")
-    @Column(name = "valeur", length = 45, nullable = false)
-    private String valeur;
-
+    @NotNull(message = "Le champs nom ne peut etre null.")
+    @Column(name = "nom", length = 45, nullable = false)
+    private String nom;
+    
     @OneToMany(mappedBy = "indicateurPerformance")
     private List<Programme> programmes = new ArrayList<Programme>();
 
@@ -85,45 +77,17 @@ public class IndicateurPerformance implements Serializable {
     }
 
     /**
-     * @return the libelle
+     * @return the nom
      */
-    public String getLibelle() {
-        return libelle;
+    public String getNom() {
+        return nom;
     }
 
     /**
-     * @param libelle the libelle to set
+     * @param nom the libelle to set
      */
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
-    }
-
-    /**
-     * @return the nature
-     */
-    public String getNature() {
-        return nature;
-    }
-
-    /**
-     * @param nature the nature to set
-     */
-    public void setNature(String nature) {
-        this.nature = nature;
-    }
-
-    /**
-     * @return the valeur
-     */
-    public String getValeur() {
-        return valeur;
-    }
-
-    /**
-     * @param valeur the valeur to set
-     */
-    public void setValeur(String valeur) {
-        this.valeur = valeur;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     /**

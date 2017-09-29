@@ -4,6 +4,7 @@ import com.bootcamp.jpa.repositories.*;
 import javax.persistence.*;
 import org.testng.annotations.Test;
 import com.bootcamp.jpa.entities.*;
+import com.bootcamp.jpa.enums.TypeDeBailleur;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
@@ -50,10 +51,11 @@ public class GenerateTableTest {
         for (int i = 0; i < nom.length; i++) {
             Bailleur bailleur = new Bailleur();
             bailleur.setNom(nom[i]);
+            bailleur.setTypeDeBailleur(TypeDeBailleur.privé);
             bailleurs.add(bailleur);
         }
 
-        BailleurRepository br = new BailleurRepository("tpJpa");
+        BailleurRepository br = new BailleurRepository("com.bootcamp_TpJPA");
         for (Object element : bailleurs) {
             br.addBailleur((Bailleur) element);
         }

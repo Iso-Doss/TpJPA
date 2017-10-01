@@ -58,6 +58,7 @@ public class Programme implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     private IndicateurPerformance indicateurPerformance;
 
+    /*
     @ManyToMany(cascade = {
         CascadeType.PERSIST,
         CascadeType.MERGE
@@ -87,6 +88,18 @@ public class Programme implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "fournisseur_id")
     )
     private List<Fournisseur> fournisseurs = new ArrayList<Fournisseur>();
+     */
+    @NotNull(message = "Le champs programmeBailleur ne peut etre null.")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ProgrammeBailleur programmeBailleur;
+
+    @NotNull(message = "Le champs programmeBeneficiaire ne peut etre null.")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ProgrammeBeneficiaire programmeBeneficiaire;
+
+    @NotNull(message = "Le champs programmeFournisseur ne peut etre null.")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ProgrammeFournisseur programmeFournisseur;
 
     public Long getId() {
         return id;
@@ -234,45 +247,45 @@ public class Programme implements Serializable {
     }
 
     /**
-     * @return the bailleurs
+     * @return the programmeBailleur
      */
-    public List<Bailleur> getBailleurs() {
-        return bailleurs;
+    public ProgrammeBailleur getProgrammeBailleur() {
+        return programmeBailleur;
     }
 
     /**
-     * @param bailleurs the bailleurs to set
+     * @param programmeBailleur the programmeBailleur to set
      */
-    public void setBailleurs(List<Bailleur> bailleurs) {
-        this.bailleurs = bailleurs;
+    public void setProgrammeBailleur(ProgrammeBailleur programmeBailleur) {
+        this.programmeBailleur = programmeBailleur;
     }
 
     /**
-     * @return the beneficiaires
+     * @return the programmeBeneficiaire
      */
-    public List<Beneficiaire> getBeneficiaires() {
-        return beneficiaires;
+    public ProgrammeBeneficiaire getProgrammeBeneficiaire() {
+        return programmeBeneficiaire;
     }
 
     /**
-     * @param beneficiaires the beneficiaires to set
+     * @param programmeBeneficiaire the programmeBeneficiaire to set
      */
-    public void setBeneficiaires(List<Beneficiaire> beneficiaires) {
-        this.beneficiaires = beneficiaires;
+    public void setProgrammeBeneficiaire(ProgrammeBeneficiaire programmeBeneficiaire) {
+        this.programmeBeneficiaire = programmeBeneficiaire;
     }
 
     /**
-     * @return the fournisseurs
+     * @return the programmeFournisseur
      */
-    public List<Fournisseur> getFournisseurs() {
-        return fournisseurs;
+    public ProgrammeFournisseur getProgrammeFournisseur() {
+        return programmeFournisseur;
     }
 
     /**
-     * @param fournisseurs the fournisseurs to set
+     * @param programmeFournisseur the programmeFournisseur to set
      */
-    public void setFournisseurs(List<Fournisseur> fournisseurs) {
-        this.fournisseurs = fournisseurs;
+    public void setProgrammeFournisseur(ProgrammeFournisseur programmeFournisseur) {
+        this.programmeFournisseur = programmeFournisseur;
     }
 
 }

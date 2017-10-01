@@ -5,10 +5,6 @@
  */
 package com.bootcamp.jpa.repositories;
 
-import java.util.List;
-import javax.persistence.Query;
-import com.bootcamp.jpa.entities.*;
-
 /**
  *
  * @author Iso-Doss
@@ -18,34 +14,4 @@ public class PersonneRepository extends BaseRepository {
     public PersonneRepository(String UnitPersistence) {
         super(UnitPersistence);
     }
-
-    public void addPersonne(Personne personne) {
-        getEm().getTransaction().begin();
-        getEm().persist(personne);
-        getEm().getTransaction().commit();
-    }
-
-    public void removePersonne(Personne personne) {
-        getEm().getTransaction().begin();
-        getEm().remove(personne);
-        getEm().getTransaction().commit();
-    }
-
-    public List<Personne> findAll() {
-        Query query = getEm().createQuery("select personne from Personne personne");
-        return query.getResultList();
-    }
-
-    public Personne findById(Personne personne) {
-        Query query = getEm().createQuery("select personne from Personne personne where personne.id = :id");
-        query.setParameter("id", personne.getId());
-        return (Personne) query.getSingleResult();
-    }
-
-    public List<Personne> findByName(Personne personne) {
-        Query query = getEm().createQuery("select personne from Personne personne where personne.nom = :nom");
-        query.setParameter("nom", personne.getNom());
-        return query.getResultList();
-    }
-
 }

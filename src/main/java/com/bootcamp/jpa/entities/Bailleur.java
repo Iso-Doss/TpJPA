@@ -6,7 +6,6 @@
 package com.bootcamp.jpa.entities;
 
 import com.bootcamp.jpa.enums.TypeDeBailleur;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
@@ -31,16 +30,7 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(
             name = "Bailleur.countAll",
             query = "select count(bailleur) from Bailleur bailleur"),})
-public class Bailleur extends Personne implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @NotNull(message = "Le champs nom ne peut etre null.")
-    @Column(name = "nom", length = 45, nullable = false)
-    private String nom;
+public class Bailleur extends Personne {
     
     @NotNull(message = "Le champ type de bailleur ne peut etre null.")
     @Column(name = "typeDeBailleur", length = 45, nullable = false)
@@ -52,53 +42,6 @@ public class Bailleur extends Personne implements Serializable {
 
     @ManyToMany(mappedBy = "bailleurs")
     private List<Projet> projets = new ArrayList<Projet>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Bailleur)) {
-            return false;
-        }
-        Bailleur other = (Bailleur) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.bootcamp.jpa.entities.Bailleur[ id=" + id + " ]";
-    }
-
-    /**
-     * @return the nom
-     */
-    public String getNom() {
-        return nom;
-    }
-
-    /**
-     * @param nom the nom to set
-     */
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
 
     /**
      * @return the typeDeBailleur

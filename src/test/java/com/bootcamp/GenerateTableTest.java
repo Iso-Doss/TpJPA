@@ -1,13 +1,11 @@
 package com.bootcamp;
 
 import com.bootcamp.jpa.repositories.*;
+import com.bootcamp.jpa.entities.*;
 import javax.persistence.*;
 import org.testng.annotations.Test;
-import com.bootcamp.jpa.entities.*;
-import com.bootcamp.jpa.enums.TypeDeBailleur;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Properties;
+import java.sql.SQLException;
+import java.util.*;
 
 /**
  * Created by darextossa on 9/22/17.
@@ -25,7 +23,7 @@ public class GenerateTableTest {
     }
 
     @Test
-    public void loadPersonnes() {
+    public void loadPersonnes() throws SQLException {
         List<Personne> personnes = new LinkedList();
 
         String nom[] = {"Iso", "Doss", "Ros"};
@@ -37,7 +35,7 @@ public class GenerateTableTest {
 
         PersonneRepository pr = new PersonneRepository("com.bootcamp_TpJPA");
         for (Object element : personnes) {
-            pr.addPersonne((Personne) element);
+            pr.create((Personne) element);
         }
 
     }

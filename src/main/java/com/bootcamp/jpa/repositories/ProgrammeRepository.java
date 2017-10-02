@@ -13,13 +13,19 @@ import com.bootcamp.jpa.entities.*;
  *
  * @author Iso-Doss
  */
-public class ProgrammeRepository extends BaseRepository {
+public class ProgrammeRepository extends BaseRepository<Programme> {
 
     public ProgrammeRepository(String UnitPersistence) {
-        super(UnitPersistence);
+        super(UnitPersistence, Programme.class);
     }
 
     public List<Bailleur> getBailleursOfProgramme(Programme programme) {
+
+        /*String className = getEntityClass().getClass().getSimpleName();
+        String query = "select t from " + className + " t where t." + propertyName + "=:param";
+        Query qry = getEm().createQuery(query);
+        qry.setParameter("param", value);
+        return (T) qry.getSingleResult();*/
         Query query = getEm().createQuery("select bailleurs from Programme programme join programme.bailleurs bailleurs where programme.id = :id");
         query.setParameter("id", programme.getId());
         return query.getResultList();

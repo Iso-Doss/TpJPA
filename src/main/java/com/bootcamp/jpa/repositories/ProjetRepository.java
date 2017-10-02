@@ -13,10 +13,10 @@ import com.bootcamp.jpa.entities.*;
  *
  * @author Iso-Doss
  */
-public class ProjetRepository extends BaseRepository {
+public class ProjetRepository extends BaseRepository<Projet> {
 
     public ProjetRepository(String UnitPersistence) {
-        super(UnitPersistence);
+        super(UnitPersistence, Projet.class);
     }
 
     public List<Bailleur> getBailleursOfProjet(Projet projet) {

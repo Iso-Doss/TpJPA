@@ -8,6 +8,7 @@ package com.bootcamp.jpa.entities;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -30,25 +31,12 @@ import javax.persistence.*;
             query = "select count(beneficiaire) from Beneficiaire beneficiaire"),})
 public class Beneficiaire extends Personne {
 
-    @ManyToMany(mappedBy = "beneficiaires")
-    private List<Programme> programmes = new ArrayList<Programme>();
+    @NotNull(message = "Le champs programmeBeneficiaire ne peut etre null.")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ProgrammeBeneficiaire programmeBeneficiaire;
 
     @ManyToMany(mappedBy = "beneficiaires")
     private List<Projet> projets = new ArrayList<Projet>();
-
-    /**
-     * @return the programmes
-     */
-    public List<Programme> getProgrammes() {
-        return programmes;
-    }
-
-    /**
-     * @param programmes the programmes to set
-     */
-    public void setProgrammes(List<Programme> programmes) {
-        this.programmes = programmes;
-    }
 
     /**
      * @return the projets
@@ -62,6 +50,20 @@ public class Beneficiaire extends Personne {
      */
     public void setProjets(List<Projet> projets) {
         this.projets = projets;
+    }
+
+    /**
+     * @return the programmeBeneficiaire
+     */
+    public ProgrammeBeneficiaire getProgrammeBeneficiaire() {
+        return programmeBeneficiaire;
+    }
+
+    /**
+     * @param programmeBeneficiaire the programmeBeneficiaire to set
+     */
+    public void setProgrammeBeneficiaire(ProgrammeBeneficiaire programmeBeneficiaire) {
+        this.programmeBeneficiaire = programmeBeneficiaire;
     }
 
 }

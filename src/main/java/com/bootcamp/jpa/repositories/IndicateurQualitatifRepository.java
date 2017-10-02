@@ -5,13 +5,15 @@
  */
 package com.bootcamp.jpa.repositories;
 
+import com.bootcamp.jpa.entities.IndicateurQualitatif;
+
 /**
  *
  * @author Iso-Doss
  */
-public class IndicateurQualitatifRepository extends BaseRepository {
+public class IndicateurQualitatifRepository extends BaseRepository<IndicateurQualitatif> {
 
     public IndicateurQualitatifRepository(String UnitPersistence) {
-        super(UnitPersistence);
+        super(UnitPersistence, IndicateurQualitatif.class);
     }
 }

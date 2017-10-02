@@ -22,7 +22,7 @@ public class ProgrammeFournisseur implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int id;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "programmeFournisseur")
     private List<Programme> programmes = new ArrayList<Programme>();
@@ -30,18 +30,18 @@ public class ProgrammeFournisseur implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "programmeFournisseur")
     private List<Fournisseur> fournisseurs = new ArrayList<Fournisseur>();
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (int) id;
         return hash;
     }
 
@@ -52,7 +52,7 @@ public class ProgrammeFournisseur implements Serializable {
             return false;
         }
         ProgrammeFournisseur other = (ProgrammeFournisseur) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (this.id != other.id) {
             return false;
         }
         return true;

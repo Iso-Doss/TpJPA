@@ -8,6 +8,7 @@ package com.bootcamp.jpa.entities;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -18,25 +19,12 @@ import javax.persistence.*;
 @DiscriminatorValue("TP_FOURNISSEUR")
 public class Fournisseur extends Personne {
 
-    @ManyToMany(mappedBy = "fournisseurs")
-    private List<Programme> programmes = new ArrayList<Programme>();
+    @NotNull(message = "Le champs programmeFournisseur ne peut etre null.")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ProgrammeFournisseur programmeFournisseur;
 
     @ManyToMany(mappedBy = "fournisseurs")
     private List<Projet> projets = new ArrayList<Projet>();
-
-    /**
-     * @return the programmes
-     */
-    public List<Programme> getProgrammes() {
-        return programmes;
-    }
-
-    /**
-     * @param programmes the programmes to set
-     */
-    public void setProgrammes(List<Programme> programmes) {
-        this.programmes = programmes;
-    }
 
     /**
      * @return the projets
@@ -50,6 +38,20 @@ public class Fournisseur extends Personne {
      */
     public void setProjets(List<Projet> projets) {
         this.projets = projets;
+    }
+
+    /**
+     * @return the programmeFournisseur
+     */
+    public ProgrammeFournisseur getProgrammeFournisseur() {
+        return programmeFournisseur;
+    }
+
+    /**
+     * @param programmeFournisseur the programmeFournisseur to set
+     */
+    public void setProgrammeFournisseur(ProgrammeFournisseur programmeFournisseur) {
+        this.programmeFournisseur = programmeFournisseur;
     }
 
 }

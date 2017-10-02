@@ -5,13 +5,16 @@
  */
 package com.bootcamp.jpa.repositories;
 
+import com.bootcamp.jpa.entities.Beneficiaire;
+
 /**
  *
  * @author Iso-Doss
  */
-public class BeneficiaireRepository extends BaseRepository {
+public class BeneficiaireRepository extends BaseRepository<Beneficiaire> {
 
-    public BeneficiaireRepository(String UnitPersistence) {
-        super(UnitPersistence);
+    public BeneficiaireRepository(String unitPersistence) {
+        super(unitPersistence, Beneficiaire.class);
     }
+
 }

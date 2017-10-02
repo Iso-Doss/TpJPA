@@ -5,13 +5,15 @@
  */
 package com.bootcamp.jpa.repositories;
 
+import com.bootcamp.jpa.entities.Livrable;
+
 /**
  *
  * @author Iso-Doss
  */
-public class LivrableRepository extends BaseRepository {
+public class LivrableRepository extends BaseRepository<Livrable> {
 
     public LivrableRepository(String UnitPersistence) {
-        super(UnitPersistence);
+        super(UnitPersistence, Livrable.class);
     }
 }

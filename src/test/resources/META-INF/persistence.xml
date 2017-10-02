@@ -9,6 +9,9 @@
         <class>com.bootcamp.jpa.entities.IndicateurQuantitatif</class>
         <class>com.bootcamp.jpa.entities.Projet</class>
         <class>com.bootcamp.jpa.entities.Programme</class>
+        <class>com.bootcamp.jpa.entities.ProgrammeBailleur</class>
+        <class>com.bootcamp.jpa.entities.ProgrammeBeneficiaire</class>
+        <class>com.bootcamp.jpa.entities.ProgrammeFournisseur</class>
         <class>com.bootcamp.jpa.entities.Livrable</class>
         <class>com.bootcamp.jpa.entities.IndicateurPerformance</class>
         <class>com.bootcamp.jpa.entities.Personne</class>
@@ -31,6 +34,9 @@
         <class>com.bootcamp.jpa.entities.IndicateurQuantitatif</class>
         <class>com.bootcamp.jpa.entities.Projet</class>
         <class>com.bootcamp.jpa.entities.Programme</class>
+        <class>com.bootcamp.jpa.entities.ProgrammeBailleur</class>
+        <class>com.bootcamp.jpa.entities.ProgrammeBeneficiaire</class>
+        <class>com.bootcamp.jpa.entities.ProgrammeFournisseur</class>
         <class>com.bootcamp.jpa.entities.Livrable</class>
         <class>com.bootcamp.jpa.entities.IndicateurPerformance</class>
         <properties>

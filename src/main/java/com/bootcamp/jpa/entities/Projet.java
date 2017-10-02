@@ -23,8 +23,8 @@ public class Projet implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    
+    private int id;
+
     @NotNull(message = "Le champs nom ne peut etre null.")
     @Column(name = "nom", length = 45, nullable = false)
     private String nom;
@@ -89,18 +89,18 @@ public class Projet implements Serializable {
     )
     private List<Beneficiaire> beneficiaires = new ArrayList<Beneficiaire>();
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (int) id;
         return hash;
     }
 
@@ -111,7 +111,7 @@ public class Projet implements Serializable {
             return false;
         }
         Projet other = (Projet) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (this.id != other.id) {
             return false;
         }
         return true;

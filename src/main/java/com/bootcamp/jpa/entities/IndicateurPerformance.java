@@ -22,12 +22,12 @@ public class IndicateurPerformance implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int id;
 
     @NotNull(message = "Le champs nom ne peut etre null.")
     @Column(name = "nom", length = 45, nullable = false)
     private String nom;
-    
+
     @OneToMany(mappedBy = "indicateurPerformance")
     private List<Programme> programmes = new ArrayList<Programme>();
 
@@ -43,18 +43,18 @@ public class IndicateurPerformance implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "indicateurPerformance")
     private List<IndicateurQuantitatif> indicateurQuantitatifs = new ArrayList<IndicateurQuantitatif>();
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (int) id;
         return hash;
     }
 
@@ -65,7 +65,7 @@ public class IndicateurPerformance implements Serializable {
             return false;
         }
         IndicateurPerformance other = (IndicateurPerformance) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (this.id != other.id) {
             return false;
         }
         return true;

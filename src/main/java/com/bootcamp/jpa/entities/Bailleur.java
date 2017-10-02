@@ -31,14 +31,15 @@ import javax.validation.constraints.NotNull;
             name = "Bailleur.countAll",
             query = "select count(bailleur) from Bailleur bailleur"),})
 public class Bailleur extends Personne {
-    
+
     @NotNull(message = "Le champ type de bailleur ne peut etre null.")
     @Column(name = "typeDeBailleur", length = 45, nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private TypeDeBailleur typeDeBailleur;
 
-    @ManyToMany(mappedBy = "bailleurs")
-    private List<Programme> programmes = new ArrayList<Programme>();
+    @NotNull(message = "Le champs programmeBailleur ne peut etre null.")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ProgrammeBailleur programmeBailleur;
 
     @ManyToMany(mappedBy = "bailleurs")
     private List<Projet> projets = new ArrayList<Projet>();
@@ -58,20 +59,6 @@ public class Bailleur extends Personne {
     }
 
     /**
-     * @return the programmes
-     */
-    public List<Programme> getProgrammes() {
-        return programmes;
-    }
-
-    /**
-     * @param programmes the programmes to set
-     */
-    public void setProgrammes(List<Programme> programmes) {
-        this.programmes = programmes;
-    }
-
-    /**
      * @return the projets
      */
     public List<Projet> getProjets() {
@@ -83,6 +70,20 @@ public class Bailleur extends Personne {
      */
     public void setProjets(List<Projet> projets) {
         this.projets = projets;
+    }
+
+    /**
+     * @return the programmeBailleur
+     */
+    public ProgrammeBailleur getProgrammeBailleur() {
+        return programmeBailleur;
+    }
+
+    /**
+     * @param programmeBailleur the programmeBailleur to set
+     */
+    public void setProgrammeBailleur(ProgrammeBailleur programmeBailleur) {
+        this.programmeBailleur = programmeBailleur;
     }
 
 }

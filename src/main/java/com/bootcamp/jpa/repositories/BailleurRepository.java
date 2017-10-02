@@ -5,13 +5,15 @@
  */
 package com.bootcamp.jpa.repositories;
 
+import com.bootcamp.jpa.entities.Bailleur;
+
 /**
  *
  * @author Iso-Doss
  */
-public class BailleurRepository extends BaseRepository {
+public class BailleurRepository extends BaseRepository<Bailleur> {
 
     public BailleurRepository(String unitPersistence) {
-        super(unitPersistence);
+        super(unitPersistence, Bailleur.class);
     }
 }

@@ -13,17 +13,85 @@ public abstract class BaseRepository<T> {
 
     private EntityManager em;
     private String unitPersistence;
+    private EntityManagerFactory emf;
+    private Class entityClass;
 
-    public BaseRepository(String unitPersistence) {
+    public BaseRepository(String unitPersistence, Class entityClass) {
         this.unitPersistence = unitPersistence;
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory(unitPersistence);
+        emf = Persistence.createEntityManagerFactory(this.unitPersistence);
         em = emf.createEntityManager();
+        this.entityClass = entityClass;
+
     }
 
-    public EntityManager getEntityManager() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory(getUnitPersistence());
-        setEm(emf.createEntityManager());
-        return getEm();
+    /**
+     * Méthode de création
+     *
+     * @param obj
+     * @return boolean
+     * @throws SQLException
+     */
+    public boolean create(T obj) throws SQLException {
+        em.getTransaction().begin();
+        em.persist(obj);
+        em.getTransaction().commit();
+        return true;
+    }
+
+    /**
+     * Méthode pour effacer
+     *
+     * @param obj
+     * @return boolean
+     * @throws java.sql.SQLException
+     */
+    public boolean delete(T obj) throws SQLException {
+        em.getTransaction().begin();
+        em.remove(obj);
+        em.getTransaction().commit();
+        return true;
+    }
+
+    /**
+     * Méthode de mise à jour
+     *
+     * @param obj
+     * @return boolean
+     * @throws java.sql.SQLException
+     */
+    public boolean update(T obj) throws SQLException {
+        em.getTransaction().begin();
+        em.merge(obj);
+        em.getTransaction().commit();
+        return true;
+    }
+
+    /**
+     * Méthode de recherche des informations
+     *
+     * @param propertyName
+     * @param value
+     * @return T
+     * @throws java.sql.SQLException
+     */
+    public T findByProperty(String propertyName, Object value) throws SQLException {
+
+        String className = getEntityClass().getSimpleName();
+        String request = "select t from " + className + " t where t." + propertyName + "=:param";
+        Query query = getEm().createQuery(request);
+        query.setParameter("param", value);
+        return (T) query.getSingleResult();
+
+    }
+
+    /**
+     * Méthode de recherche de toutes les information
+     *
+     * @return T
+     * @throws java.sql.SQLException
+     */
+    public List<T> findAll() throws SQLException {
+        return getEm().createQuery("select t from " + getEntityClass().getSimpleName() + " t").getResultList();
     }
 
     /**
@@ -41,80 +109,44 @@ public abstract class BaseRepository<T> {
     }
 
     /**
-     * @return the UnitPersistence
+     * @return the unitPersistence
      */
     public String getUnitPersistence() {
         return unitPersistence;
     }
 
     /**
-     * @param unitPersistence
+     * @param UnitPersistence the unitPersistence to set
      */
-    public void setUnitPersistence(String unitPersistence) {
-        this.unitPersistence = unitPersistence;
+    public void setUnitPersistence(String UnitPersistence) {
+        this.unitPersistence = UnitPersistence;
     }
 
     /**
-     * Méthode de création
-     *
-     * @param obj
-     * @return boolean
-     * @throws SQLException
+     * @return the emf
      */
-    public boolean create(T obj) throws SQLException {
-        em.persist(obj);
-        return true;
+    public EntityManagerFactory getEmf() {
+        return emf;
     }
 
     /**
-     * Méthode pour effacer
-     *
-     * @param obj
-     * @return boolean
-     * @throws java.sql.SQLException
+     * @param emf the emf to set
      */
-    public boolean delete(T obj) throws SQLException {
-        em.remove(obj);
-        return true;
+    public void setEmf(EntityManagerFactory emf) {
+        this.emf = emf;
     }
 
     /**
-     * Méthode de mise à jour
-     *
-     * @param obj
-     * @return boolean
-     * @throws java.sql.SQLException
+     * @return the entityClass
      */
-    public boolean update(T obj) throws SQLException {
-        em.merge(obj);
-        return true;
+    public Class getEntityClass() {
+        return entityClass;
     }
 
     /**
-     * Méthode de recherche des informations
-     *
-     * @param propertyName
-     * @param value
-     * @return T
-     * @throws java.sql.SQLException
+     * @param entityClass the entityClass to set
      */
-    public T findByProperty(String propertyName, Object value) throws SQLException {
-        T result = null;
-        String className = result.getClass().getSimpleName();
-        String query = "select t from " + className + " t where t." + propertyName + "=:param";
-        Query qry = getEm().createQuery(query);
-        qry.setParameter("param", value);
-        return (T) qry.getSingleResult();
-    }
-
-    /*
-      * Méthode de recherche de tous les objets
-     */
-    public List<T> findAll() throws SQLException {
-        T result = null;
-        String className = result.getClass().getSimpleName();
-        String query = "select t from " + className;
-        Query qry = getEm().createQuery(query);
-        return (List<T>) qry.getSingleResult();
+    public void setEntityClass(Class entityClass) {
+        this.entityClass = entityClass;
     }
 }

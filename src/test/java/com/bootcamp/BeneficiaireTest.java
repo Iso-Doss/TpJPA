@@ -6,6 +6,7 @@
 package com.bootcamp;
 
 import com.bootcamp.jpa.entities.*;
+import com.bootcamp.jpa.enums.*;
 import com.bootcamp.jpa.repositories.*;
 import org.testng.annotations.Test;
 import java.sql.SQLException;
@@ -55,53 +56,51 @@ public class BeneficiaireTest {
 
     @Test
     public void readAllBeneficiaireMysql() throws SQLException {
-        this.createBeneficiaireMysql();
         mysql.findAll();
 
     }
 
     @Test
     public void readAllBeneficiaireDerby() throws SQLException {
-        this.createBeneficiaireDerby();
         derby.findAll();
     }
 
     @Test
     public void readBeneficiaireMysql() throws SQLException {
-        this.createBeneficiaireMysql();
-        mysql.findByProperty("id", 2);
+        mysql.findByProperty("nom", "Iso");
 
     }
 
     @Test
     public void readBeneficiaireDerby() throws SQLException {
-        this.createBeneficiaireDerby();
-        derby.findByProperty("id", 2);
+        derby.findByProperty("nom", "Iso");
     }
 
     @Test
     public void updateBeneficiaireMysql() throws SQLException {
         this.createBeneficiaireMysql();
-        Beneficiaire beneficiaire = mysql.findByProperty("id", 2);
+        Beneficiaire beneficiaire = mysql.findByProperty("nom", "Iso");
+        beneficiaire.setNom("zozo");
         mysql.update(beneficiaire);
     }
 
     @Test
     public void updateeBeneficiaireDerby() throws SQLException {
         this.createBeneficiaireDerby();
-        Beneficiaire beneficiaire = derby.findByProperty("id", 2);
+        Beneficiaire beneficiaire = derby.findByProperty("nom", "Iso");
+        beneficiaire.setNom("zozo");
         derby.update(beneficiaire);
     }
 
     @Test
     public void deleteBeneficiaireMysql() throws SQLException {
-        Beneficiaire beneficiaire = mysql.findByProperty("id", 2);
+        Beneficiaire beneficiaire = mysql.findByProperty("nom", "Doss");
         mysql.delete(beneficiaire);
     }
 
     @Test
     public void deleteBeneficiaireDerby() throws SQLException {
-        Beneficiaire beneficiaire = derby.findByProperty("id", 2);
+        Beneficiaire beneficiaire = derby.findByProperty("nom", "Doss");
 
         derby.delete(beneficiaire);
     }

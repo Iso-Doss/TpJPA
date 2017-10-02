@@ -55,53 +55,51 @@ public class FournisseurTest {
 
     @Test
     public void readAllFournisseurMysql() throws SQLException {
-        this.createFournisseurMysql();
         mysql.findAll();
 
     }
 
     @Test
     public void readAllFournisseurDerby() throws SQLException {
-        this.createFournisseurDerby();
         derby.findAll();
     }
 
     @Test
     public void readFournisseurMysql() throws SQLException {
-        this.createFournisseurMysql();
-        mysql.findByProperty("id", 2);
+        mysql.findByProperty("nom", "Iso");
 
     }
 
     @Test
     public void readFournisseurDerby() throws SQLException {
-        this.createFournisseurDerby();
-        derby.findByProperty("id", 2);
+        derby.findByProperty("nom", "Iso");
     }
 
     @Test
     public void updateFournisseurMysql() throws SQLException {
         this.createFournisseurMysql();
-        Fournisseur fournisseur = mysql.findByProperty("id", 2);
+        Fournisseur fournisseur = mysql.findByProperty("nom", "Iso");
+        fournisseur.setNom("zozo");
         mysql.update(fournisseur);
     }
 
     @Test
     public void updateeFournisseurDerby() throws SQLException {
         this.createFournisseurDerby();
-        Fournisseur fournisseur = derby.findByProperty("id", 2);
+        Fournisseur fournisseur = derby.findByProperty("nom", "Iso");
+        fournisseur.setNom("zozo");
         derby.update(fournisseur);
     }
 
     @Test
     public void deleteFournisseurMysql() throws SQLException {
-        Fournisseur fournisseur = mysql.findByProperty("id", 2);
+        Fournisseur fournisseur = mysql.findByProperty("nom", "Doss");
         mysql.delete(fournisseur);
     }
 
     @Test
     public void deleteFournisseurDerby() throws SQLException {
-        Fournisseur fournisseur = derby.findByProperty("id", 2);
+        Fournisseur fournisseur = derby.findByProperty("nom", "Doss");
 
         derby.delete(fournisseur);
     }

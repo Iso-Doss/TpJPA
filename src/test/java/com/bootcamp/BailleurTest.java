@@ -63,7 +63,6 @@ public class BailleurTest {
 
     }
 
-    
     @Test
     public void readAllBailleurDerby() throws SQLException {
         this.createBailleurDerby();
@@ -73,41 +72,43 @@ public class BailleurTest {
     @Test
     public void readBailleurMysql() throws SQLException {
         this.createBailleurMysql();
-        mysql.findByProperty("nom", "toto");
+        mysql.findByProperty("id", 2);
 
     }
 
     @Test
     public void readBailleurDerby() throws SQLException {
         this.createBailleurDerby();
-        derby.findByProperty("nom", "toto");
+        derby.findByProperty("id", 2);
     }
 
-    /*@Test
+    @Test
     public void updateBailleurMysql() throws SQLException {
         this.createBailleurMysql();
-        Object bailleur = mysql.findByProperty("nom", "Iso");
+        Bailleur bailleur = mysql.findByProperty("id", 2);
         mysql.update(bailleur);
     }
 
     @Test
     public void updateeBailleurDerby() throws SQLException {
         this.createBailleurDerby();
-        Object bailleur = derby.findByProperty("nom", "Iso");
+        Bailleur bailleur = derby.findByProperty("id", 2);
         derby.update(bailleur);
     }
 
     @Test
     public void deleteBailleurMysql() throws SQLException {
-        Object bailleur = mysql.findByProperty("nom", "Iso");
+        Bailleur bailleur = mysql.findByProperty("id", 2);
         mysql.delete(bailleur);
     }
 
     @Test
     public void deleteBailleurDerby() throws SQLException {
-        Object bailleur = derby.findByProperty("nom", "Iso");
+        Bailleur bailleur = derby.findByProperty("id", 2);
+
         derby.delete(bailleur);
-    }*/
+    }
+
     /**
      * @return the mysql
      */

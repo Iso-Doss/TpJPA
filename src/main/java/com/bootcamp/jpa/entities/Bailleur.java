@@ -34,7 +34,7 @@ public class Bailleur extends Personne {
 
     @NotNull(message = "Le champ type de bailleur ne peut etre null.")
     @Column(name = "typeDeBailleur", length = 45, nullable = false)
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private TypeDeBailleur typeDeBailleur;
 
     @NotNull(message = "Le champs programmeBailleur ne peut etre null.")

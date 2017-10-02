@@ -75,12 +75,15 @@ public abstract class BaseRepository<T> {
      * @throws java.sql.SQLException
      */
     public T findByProperty(String propertyName, Object value) throws SQLException {
-
-        String className = getEntityClass().getSimpleName();
-        String request = "select t from " + className + " t where t." + propertyName + "=:param";
-        Query query = getEm().createQuery(request);
-        query.setParameter("param", value);
-        return (T) query.getSingleResult();
+        try {
+            String className = getEntityClass().getSimpleName();
+            String request = "select t from " + className + " t where t." + propertyName + "=:param";
+            Query query = getEm().createQuery(request);
+            query.setParameter("param", value);
+            return (T) query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
 
     }
 

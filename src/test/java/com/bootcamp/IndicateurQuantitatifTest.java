@@ -20,7 +20,7 @@ public class IndicateurQuantitatifTest {
     private IndicateurQuantitatifRepository mysql = new IndicateurQuantitatifRepository("com.bootcamp_TpJPA");
     private IndicateurQuantitatifRepository derby = new IndicateurQuantitatifRepository("tpJpa");
 
-    //@Test
+    @Test
     public void createIndicateurQuantitatifMysql() throws SQLException {
         List<IndicateurQuantitatif> indicateurQuantitatifs = new LinkedList();
 
@@ -40,7 +40,7 @@ public class IndicateurQuantitatifTest {
 
     }
 
-    //@Test
+    @Test
     public void createIndicateurQuantitatifDerby() throws SQLException {
         List<IndicateurQuantitatif> indicateurQuantitatifs = new LinkedList();
 

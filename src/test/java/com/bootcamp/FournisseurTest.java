@@ -77,7 +77,6 @@ public class FournisseurTest {
 
     @Test
     public void updateFournisseurMysql() throws SQLException {
-        this.createFournisseurMysql();
         Fournisseur fournisseur = mysql.findByProperty("nom", "Iso");
         fournisseur.setNom("zozo");
         mysql.update(fournisseur);
@@ -85,7 +84,6 @@ public class FournisseurTest {
 
     @Test
     public void updateeFournisseurDerby() throws SQLException {
-        this.createFournisseurDerby();
         Fournisseur fournisseur = derby.findByProperty("nom", "Iso");
         fournisseur.setNom("zozo");
         derby.update(fournisseur);

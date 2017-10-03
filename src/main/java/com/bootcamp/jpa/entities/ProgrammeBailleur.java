@@ -28,6 +28,9 @@ public class ProgrammeBailleur implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "programmeBailleur")
     private List<Bailleur> bailleurs = new ArrayList<Bailleur>();
+    
+    @Column(name="nombre", nullable = false)
+    private int nombre;
 
     public int getId() {
         return id;
@@ -88,5 +91,19 @@ public class ProgrammeBailleur implements Serializable {
      */
     public void setBailleurs(List<Bailleur> bailleurs) {
         this.bailleurs = bailleurs;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public int getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(int nombre) {
+        this.nombre = nombre;
     }
 }

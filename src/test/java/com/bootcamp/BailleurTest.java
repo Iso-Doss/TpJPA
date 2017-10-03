@@ -80,7 +80,6 @@ public class BailleurTest {
 
     @Test
     public void updateBailleurMysql() throws SQLException {
-        this.createBailleurMysql();
         Bailleur bailleur = mysql.findByProperty("nom", "Iso");
         bailleur.setNom("zozo");
         mysql.update(bailleur);
@@ -88,7 +87,6 @@ public class BailleurTest {
 
     @Test
     public void updateeBailleurDerby() throws SQLException {
-        this.createBailleurDerby();
         Bailleur bailleur = derby.findByProperty("nom", "Iso");
         bailleur.setNom("zozo");
         derby.update(bailleur);

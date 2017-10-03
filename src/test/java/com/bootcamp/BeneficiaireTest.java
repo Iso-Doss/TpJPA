@@ -77,7 +77,6 @@ public class BeneficiaireTest {
 
     @Test
     public void updateBeneficiaireMysql() throws SQLException {
-        this.createBeneficiaireMysql();
         Beneficiaire beneficiaire = mysql.findByProperty("nom", "Iso");
         beneficiaire.setNom("zozo");
         mysql.update(beneficiaire);
@@ -85,7 +84,6 @@ public class BeneficiaireTest {
 
     @Test
     public void updateeBeneficiaireDerby() throws SQLException {
-        this.createBeneficiaireDerby();
         Beneficiaire beneficiaire = derby.findByProperty("nom", "Iso");
         beneficiaire.setNom("zozo");
         derby.update(beneficiaire);

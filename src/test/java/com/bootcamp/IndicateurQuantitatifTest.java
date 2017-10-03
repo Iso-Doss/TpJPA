@@ -20,7 +20,7 @@ public class IndicateurQuantitatifTest {
     private IndicateurQuantitatifRepository mysql = new IndicateurQuantitatifRepository("com.bootcamp_TpJPA");
     private IndicateurQuantitatifRepository derby = new IndicateurQuantitatifRepository("tpJpa");
 
-    @Test
+    //@Test
     public void createIndicateurQuantitatifMysql() throws SQLException {
         List<IndicateurQuantitatif> indicateurQuantitatifs = new LinkedList();
 
@@ -40,7 +40,7 @@ public class IndicateurQuantitatifTest {
 
     }
 
-    @Test
+    //@Test
     public void createIndicateurQuantitatifDerby() throws SQLException {
         List<IndicateurQuantitatif> indicateurQuantitatifs = new LinkedList();
 
@@ -59,51 +59,49 @@ public class IndicateurQuantitatifTest {
         }
     }
 
-    @Test
+    //@Test
     public void readAllIndicateurQuantitatifMysql() throws SQLException {
         mysql.findAll();
 
     }
 
-    @Test
+    //@Test
     public void readAllIndicateurQuantitatifDerby() throws SQLException {
         derby.findAll();
     }
 
-    @Test
+    //@Test
     public void readIndicateurQuantitatifMysql() throws SQLException {
         mysql.findByProperty("nom", "Iso");
 
     }
 
-    @Test
+    //@Test
     public void readIndicateurQuantitatifDerby() throws SQLException {
         derby.findByProperty("nom", "Iso");
     }
 
-    @Test
+    //@Test
     public void updateIndicateurQuantitatifMysql() throws SQLException {
-        this.createIndicateurQuantitatifMysql();
         IndicateurQuantitatif indicateurQuantitatif = mysql.findByProperty("nom", "Iso");
         indicateurQuantitatif.setNom("zozo");
         mysql.update(indicateurQuantitatif);
     }
 
-    @Test
+    //@Test
     public void updateeIndicateurQuantitatifDerby() throws SQLException {
-        this.createIndicateurQuantitatifDerby();
         IndicateurQuantitatif indicateurQuantitatif = derby.findByProperty("nom", "Iso");
         indicateurQuantitatif.setNom("zozo");
         derby.update(indicateurQuantitatif);
     }
 
-    @Test
+    //@Test
     public void deleteIndicateurQuantitatifMysql() throws SQLException {
         IndicateurQuantitatif indicateurQuantitatif = mysql.findByProperty("nom", "Doss");
         mysql.delete(indicateurQuantitatif);
     }
 
-    @Test
+    //@Test
     public void deleteIndicateurQuantitatifDerby() throws SQLException {
         IndicateurQuantitatif indicateurQuantitatif = derby.findByProperty("nom", "Doss");
 

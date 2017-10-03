@@ -6,7 +6,6 @@
 package com.bootcamp;
 
 import com.bootcamp.jpa.entities.*;
-import com.bootcamp.jpa.enums.*;
 import com.bootcamp.jpa.repositories.*;
 import org.testng.annotations.Test;
 import java.sql.SQLException;

@@ -29,7 +29,7 @@ public class BailleurTest {
         for (int i = 0; i < nom.length; i++) {
             Bailleur bailleur = new Bailleur();
             bailleur.setNom(nom[i]);
-            bailleur.setTypeDeBailleur(TypeDeBailleur.privé);
+            bailleur.setTypeDeBailleur(TypeDeBailleur.privÃ©);
             bailleurs.add(bailleur);
         }
 
@@ -47,7 +47,7 @@ public class BailleurTest {
         for (int i = 0; i < nom.length; i++) {
             Bailleur bailleur = new Bailleur();
             bailleur.setNom(nom[i]);
-            bailleur.setTypeDeBailleur(TypeDeBailleur.privé);
+            bailleur.setTypeDeBailleur(TypeDeBailleur.privÃ©);
             bailleurs.add(bailleur);
         }
 

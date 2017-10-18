@@ -11,7 +11,7 @@ package com.bootcamp.jpa.enums;
  */
 public enum TypeDeBailleur {
     gouvernementales,
-    privé,
+    privÃ©,
     gouvernement,
     partenaire_international;
 }

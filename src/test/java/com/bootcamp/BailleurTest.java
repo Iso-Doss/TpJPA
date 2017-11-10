@@ -29,7 +29,7 @@ public class BailleurTest {
         for (int i = 0; i < nom.length; i++) {
             Bailleur bailleur = new Bailleur();
             bailleur.setNom(nom[i]);
-            bailleur.setTypeDeBailleur(TypeDeBailleur.privé);
+            bailleur.setTypeDeBailleur(TypeDeBailleur.priver);
             bailleurs.add(bailleur);
         }
 
@@ -47,7 +47,7 @@ public class BailleurTest {
         for (int i = 0; i < nom.length; i++) {
             Bailleur bailleur = new Bailleur();
             bailleur.setNom(nom[i]);
-            bailleur.setTypeDeBailleur(TypeDeBailleur.privé);
+            bailleur.setTypeDeBailleur(TypeDeBailleur.priver);
             bailleurs.add(bailleur);
         }
 
@@ -62,7 +62,7 @@ public class BailleurTest {
 
     }
 
-    @Test
+    //@Test
     public void readAllBailleurDerby() throws SQLException {
         derby.findAll();
     }
@@ -73,32 +73,32 @@ public class BailleurTest {
 
     }
 
-    @Test
+    //@Test
     public void readBailleurDerby() throws SQLException {
         derby.findByProperty("nom", "Iso");
     }
 
-    @Test
+    //@Test
     public void updateBailleurMysql() throws SQLException {
         Bailleur bailleur = mysql.findByProperty("nom", "Iso");
         bailleur.setNom("zozo");
         mysql.update(bailleur);
     }
 
-    @Test
+    //@Test
     public void updateeBailleurDerby() throws SQLException {
         Bailleur bailleur = derby.findByProperty("nom", "Iso");
         bailleur.setNom("zozo");
         derby.update(bailleur);
     }
 
-    @Test
+    //@Test
     public void deleteBailleurMysql() throws SQLException {
         Bailleur bailleur = mysql.findByProperty("nom", "Doss");
         mysql.delete(bailleur);
     }
 
-    @Test
+    //@Test
     public void deleteBailleurDerby() throws SQLException {
         Bailleur bailleur = derby.findByProperty("nom", "Doss");
 
